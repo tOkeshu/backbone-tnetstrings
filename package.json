@@ -1,0 +1,12 @@
+{
+  "name"         : "backbone-tnestrings",
+  "description"  : "A TNetStrings adapter for Backbone.",
+  "url"          : "",
+  "keywords"     : ["util", "client", "browser", "backbone", "tnestrings"],
+  "author"       : "Romain Gauthier <romain.gauthier@monkeypatch.me>",
+  "contributors" : [],
+  "version"      : "0.0.1"
+  "lib"          : ".",
+  "main"         : "backbone-tnetstrings.js",
+}
+

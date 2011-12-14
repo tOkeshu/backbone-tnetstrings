@@ -8,6 +8,13 @@
         'read'  : 'GET'
     };
 
+    // Turn on `emulateTNetStrings` to support legacy servers that
+    // can't deal with direct `application/tnetstring` requests
+    // ... will encode the body as `application/x-www-form-urlencoded`
+    // instead and will send the model in a form param named `model`.
+    Backbone.emulateTNetStrings = false;
+
+
     // Backbone.TNetStrings.sync
     // -------------
 
@@ -28,6 +35,12 @@
             if (!options.data && model && (method == 'create' || method == 'update')) {
                 params.contentType = 'application/tnetstring';
                 params.data = tnetstrings.dump(model.toJSON());
+            }
+
+            // For older servers, emulate JSON by encoding the request into an HTML-form.
+            if (Backbone.emulateTNetStrings) {
+                params.contentType = 'application/x-www-form-urlencoded';
+                params.data = params.data ? {model : params.data} : {};
             }
 
             // For older servers, emulate HTTP by mimicking the HTTP method with `_method`

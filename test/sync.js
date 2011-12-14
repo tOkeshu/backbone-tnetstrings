@@ -70,10 +70,10 @@ $(document).ready(function() {
         equals(lastRequest.type, 'POST');
         equals(lastRequest.dataType, 'tnetstring');
         equals(lastRequest.data._method, 'PUT');
-        var data = tnetstrings.parse(lastRequest.data.model);
-        equals(data.id, '2-the-tempest');
-        equals(data.author, 'Tim Shakespeare');
-        equals(data.length, 123);
+        var tnet = tnetstrings.parse(lastRequest.data.model);
+        equals(tnet.value.id, '2-the-tempest');
+        equals(tnet.value.author, 'Tim Shakespeare');
+        equals(tnet.value.length, 123);
         Backbone.emulateHTTP = Backbone.emulateTNetStrings = false;
     });
 
@@ -96,10 +96,10 @@ $(document).ready(function() {
         equals(lastRequest.url, '/library/2-the-tempest');
         equals(lastRequest.type, 'PUT');
         equals(lastRequest.contentType, 'application/x-www-form-urlencoded');
-        var data = tnetstrings.parse(lastRequest.data.model);
-        equals(data.id, '2-the-tempest');
-        equals(data.author, 'Tim Shakespeare');
-        equals(data.length, 123);
+        var tnet = tnetstrings.parse(lastRequest.data.model);
+        equals(tnet.value.id, '2-the-tempest');
+        equals(tnet.value.author, 'Tim Shakespeare');
+        equals(tnet.value.length, 123);
         Backbone.emulateTNetStrings = false;
     });
 
@@ -122,7 +122,7 @@ $(document).ready(function() {
         library.first().destroy();
         equals(lastRequest.url, '/library/2-the-tempest');
         equals(lastRequest.type, 'POST');
-        equals(tnetstrings.dump(lastRequest.data), '{"_method":"DELETE"}');
+        equals(tnetstrings.dump(lastRequest.data), '19:7:_method,6:DELETE,}');
         Backbone.emulateHTTP = Backbone.emulateTNetStrings = false;
     });
 

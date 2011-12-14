@@ -12,7 +12,7 @@ Usage
 Include Backbone-TNetStrings after having included Backbone.js:
 
     <script type="text/javascript" src="backbone.js"></script>
-    <script type="text/javascript" src="backbone.tnetstrings.js"></script>
+    <script type="text/javascript" src="backbone-tnetstrings.js"></script>
 
 
 Override the default Backbone.sync method:

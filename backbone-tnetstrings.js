@@ -1,6 +1,7 @@
 (function(){
 
-    // Map from CRUD to HTTP for our default `Backbone.sync` implementation.
+    // Map from CRUD to HTTP for our `Backbone.TNetStrings.sync`
+    // implementation.
     var methodMap = {
         'create': 'POST',
         'update': 'PUT',
@@ -15,11 +16,21 @@
     Backbone.emulateTNetStrings = false;
 
 
-    // Backbone.TNetStrings.sync
-    // -------------
+    // Backbone.TNetStrings
+    // --------------------
 
-    //
     Backbone.TNetStrings = {
+
+        // Backbone-TNetStrings.sync
+        // -------------
+
+        // This method is very similar to the original Backbone.sync
+        // but use the TNetStrings serialisation format instead of
+        // JSON. If you are not familiar with TNetStrings,
+        // http://tnetstrings.org/ is a good starting point.
+        //
+        // It supports the Backbone.emulateHTTP and
+        // Backbone.emulateTNetStrings options.
         sync: function(method, model, options, error) {
             var type = methodMap[method];
 
@@ -60,6 +71,9 @@
             return $.ajax(_.extend(params, options));
         }
     };
+
+    // Helpers
+    // -------
 
     // Helper function to get a URL from a Model or Collection as a property
     // or as a function.

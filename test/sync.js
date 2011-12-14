@@ -74,6 +74,7 @@ $(document).ready(function() {
         equals(tnet.value.id, '2-the-tempest');
         equals(tnet.value.author, 'Tim Shakespeare');
         equals(tnet.value.length, 123);
+        equals(tnet.extra, "");
         Backbone.emulateHTTP = Backbone.emulateTNetStrings = false;
     });
 
@@ -87,6 +88,7 @@ $(document).ready(function() {
         equals(tnet.value.id, '2-the-tempest');
         equals(tnet.value.author, 'Tim Shakespeare');
         equals(tnet.value.length, 123);
+        equals(tnet.extra, "");
         Backbone.emulateHTTP = false;
     });
 
@@ -100,6 +102,7 @@ $(document).ready(function() {
         equals(tnet.value.id, '2-the-tempest');
         equals(tnet.value.author, 'Tim Shakespeare');
         equals(tnet.value.length, 123);
+        equals(tnet.extra, "");
         Backbone.emulateTNetStrings = false;
     });
 

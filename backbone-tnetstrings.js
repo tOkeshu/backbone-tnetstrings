@@ -30,6 +30,19 @@
                 params.data = tnetstrings.dump(model.toJSON());
             }
 
+            // For older servers, emulate HTTP by mimicking the HTTP method with `_method`
+            // And an `X-HTTP-Method-Override` header.
+            if (Backbone.emulateHTTP) {
+                if (type === 'PUT' || type === 'DELETE') {
+                    if (Backbone.emulateTNetStrings) params.data._method = type;
+                    params.type = 'POST';
+                    params.beforeSend = function(xhr) {
+                        xhr.setRequestHeader('X-HTTP-Method-Override', type);
+                    };
+                }
+            }
+
+
             // Make the request, allowing the user to override any Ajax options.
             return $.ajax(_.extend(params, options));
         }

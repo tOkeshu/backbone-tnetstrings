@@ -83,10 +83,10 @@ $(document).ready(function() {
         equals(lastRequest.url, '/library/2-the-tempest');
         equals(lastRequest.type, 'POST');
         equals(lastRequest.contentType, 'application/tnetstring');
-        var data = tnetstrings.parse(lastRequest.data);
-        equals(data.id, '2-the-tempest');
-        equals(data.author, 'Tim Shakespeare');
-        equals(data.length, 123);
+        var tnet = tnetstrings.parse(lastRequest.data);
+        equals(tnet.value.id, '2-the-tempest');
+        equals(tnet.value.author, 'Tim Shakespeare');
+        equals(tnet.value.length, 123);
         Backbone.emulateHTTP = false;
     });
 

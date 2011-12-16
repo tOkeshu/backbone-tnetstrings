@@ -27,7 +27,7 @@ $(document).ready(function() {
         library.fetch();
         equals(lastRequest.url, '/library');
         equals(lastRequest.type, 'GET');
-        equals(lastRequest.dataType, 'tnetstring');
+        equals(lastRequest.dataType, 'tnetstrings');
         ok(_.isEmpty(lastRequest.data));
     });
 
@@ -42,7 +42,7 @@ $(document).ready(function() {
         library.add(library.create(attrs));
         equals(lastRequest.url, '/library');
         equals(lastRequest.type, 'POST');
-        equals(lastRequest.dataType, 'tnetstring');
+        equals(lastRequest.dataType, 'tnetstrings');
         var tnet = tnetstrings.parse(lastRequest.data);
         equals(tnet.value.title, 'The Tempest');
         equals(tnet.value.author, 'Bill Shakespeare');
@@ -54,7 +54,7 @@ $(document).ready(function() {
         library.first().save({id: '1-the-tempest', author: 'William Shakespeare'});
         equals(lastRequest.url, '/library/1-the-tempest');
         equals(lastRequest.type, 'PUT');
-        equals(lastRequest.dataType, 'tnetstring');
+        equals(lastRequest.dataType, 'tnetstrings');
         var tnet = tnetstrings.parse(lastRequest.data);
         equals(tnet.value.id, '1-the-tempest');
         equals(tnet.value.title, 'The Tempest');
@@ -68,7 +68,7 @@ $(document).ready(function() {
         library.first().save({id: '2-the-tempest', author: 'Tim Shakespeare'});
         equals(lastRequest.url, '/library/2-the-tempest');
         equals(lastRequest.type, 'POST');
-        equals(lastRequest.dataType, 'tnetstring');
+        equals(lastRequest.dataType, 'tnetstrings');
         equals(lastRequest.data._method, 'PUT');
         var tnet = tnetstrings.parse(lastRequest.data.model);
         equals(tnet.value.id, '2-the-tempest');
@@ -83,7 +83,7 @@ $(document).ready(function() {
         library.first().save({id: '2-the-tempest', author: 'Tim Shakespeare'});
         equals(lastRequest.url, '/library/2-the-tempest');
         equals(lastRequest.type, 'POST');
-        equals(lastRequest.contentType, 'application/tnetstring');
+        equals(lastRequest.contentType, 'application/tnetstrings');
         var tnet = tnetstrings.parse(lastRequest.data);
         equals(tnet.value.id, '2-the-tempest');
         equals(tnet.value.author, 'Tim Shakespeare');

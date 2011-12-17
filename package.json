@@ -1,11 +1,11 @@
 {
   "name"         : "backbone-tnestrings",
   "description"  : "A TNetStrings adapter for Backbone.",
-  "url"          : "",
+  "url"          : "http://github.com/rgauthier/backbone-tnetstrings",
   "keywords"     : ["util", "client", "browser", "backbone", "tnestrings"],
   "author"       : "Romain Gauthier <romain.gauthier@monkeypatch.me>",
   "contributors" : [],
-  "version"      : "0.0.1"
+  "version"      : "0.1.0"
   "lib"          : ".",
   "main"         : "backbone-tnetstrings.js",
 }

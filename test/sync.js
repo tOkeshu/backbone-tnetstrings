@@ -138,4 +138,13 @@ $(document).ready(function() {
         equals(lastRequest.url, '/one/two');
     });
 
+    test("sync: parse the TNetStrings response", function() {
+        model = new Backbone.Model();
+        model.fetch({url: '/one/two'});
+        // send {"id": "123", "foo": "bar"} to the model
+        lastRequest.success('23:2:id,3:123,3:foo,3:bar,}');
+        equals(model.id, '123');
+        equals(model.get('foo'), 'bar');
+    });
+
 });

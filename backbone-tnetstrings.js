@@ -32,6 +32,8 @@
         // It supports the Backbone.emulateHTTP and
         // Backbone.emulateTNetStrings options.
         sync: function(method, model, options, error) {
+            options || (options = {});
+
             var type = methodMap[method];
 
             // Default TNetStrings-request options.
@@ -66,6 +68,11 @@
                 }
             }
 
+            var success = options.success
+            options.success = function(resp, status, xhr) {
+                var resp = tnetstrings.parse(resp).value;
+                if (success) success(resp, status, xhr);
+            }
 
             // Make the request, allowing the user to override any Ajax options.
             return $.ajax(_.extend(params, options));
